@@ -14,4 +14,4 @@ function locationList(locations) {
 }, this);
 }
 
-ko.applyBindings(new locationList(locations))
+ko.applyBindings(new locationList(locations));
