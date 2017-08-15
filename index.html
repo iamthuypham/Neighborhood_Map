@@ -16,11 +16,11 @@
     <div id="map"></div>
     <div id="search">
         <div id="search_box_wrapper">
-            <input id="search_box" type="text" placeholder="Search"/>
+            <input id="search_box" placeholder="Search" type="search" name="filter" data-bind="textInput: query" autocomplete="off" />
         </div>
-        <ul id="location_list" data-bind="foreach: locations">
+        <ul id="location_list" data-bind="foreach: filteredLocations">
             <div id="location_box">
-                <li data-bind="text: $data.title, value: title, visible: shouldShowLocation"></li>
+                <li data-bind="text: $data.title"></li>
             </div>
         </ul>
     </div>
