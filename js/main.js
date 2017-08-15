@@ -1,19 +1,17 @@
 // This function populates the list of places in the right menu
 function locationList(locations) {
-    this.locations = ko.observableArray(locations);
-    this.title = ko.observable()
-    this.shouldShowLocation = ko.observable(true);
+    this.query = ko.observable('');
     
-    var searchBox = document.getElementById("search_box");
-    searchBox.addEventListener("keyup", function() {
-        // console.log(this)
-        var val = searchBox.value;
-        if (this.title().toLowerCase().includes(val)) {
-            this.shouldShowLocation(true)
+    this.filteredLocations = ko.computed(function () {
+        if (this.query()) {
+            var search = this.query().toLowerCase();
+            return ko.utils.arrayFilter(locations, function (location) {
+                return location.title.toLowerCase().indexOf(search) >= 0;
+            });
         } else {
-            this.shouldShowLocation(false)
+            return locations
         }
-    })
+}, this);
 }
 
 ko.applyBindings(new locationList(locations))
