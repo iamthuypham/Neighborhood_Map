@@ -1,0 +1,45 @@
+html,
+body {
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+}
+
+ul, 
+li {
+    list-style-type: none;
+    list-style: none;
+}
+
+#map {
+    width: 100%;
+}
+
+#floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+}
+
+#search {
+    padding: 10px;
+}
+
+#location_box {
+    padding: 5px;
+    margin-bottom: 3px;
+    border: solid 0.5px #e2e2e2;
+    border-radius: 5px;
+    background-color: lightblue;
+}

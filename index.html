@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/main.css">
+    <script type='text/javascript' src='js/knockout-3.4.2.js'></script>
+    
+</head>
+
+<body>
+    <div id="floating-panel">
+        <input onclick="clearMarkers()" type=button value="Hide Markers">
+        <input onclick="showMarkers()" type=button value="Show All Markers">
+        <input onclick="deleteMarkers()" type=button value="Delete Markers">
+    </div>
+    <div id="map"></div>
+    <div id="search">
+        <div id="search_box_wrapper">
+            <input id="search_box" type="text" placeholder="Search"/>
+        </div>
+        <ul id="location_list" data-bind="foreach: locations">
+            <div id="location_box">
+                <li data-bind="text: $data.title, value: title, visible: shouldShowLocation"></li>
+            </div>
+        </ul>
+    </div>
+    <script type='text/javascript' src="js/list.js"></script>
+    <script type='text/javascript' src="js/map.js"></script>
+    <script type='text/javascript' src="js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8&v=3&callback=initMap"></script>
+</body>
+
+</html>
