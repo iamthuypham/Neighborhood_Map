@@ -18,6 +18,8 @@
         <div id="search_box_wrapper">
             <input id="search_box" placeholder="Search" type="search" name="filter" data-bind="textInput: query" autocomplete="off" />
         </div>
+        <div id="result_message" data-bind="text: filteredLocations().length > 0 ? filteredLocations().length+' result(s)' : 'No result found' ">
+        </div>
         <ul id="location_list" data-bind="foreach: filteredLocations">
             <div id="location_box">
                 <li data-bind="text: $data.title"></li>
@@ -26,7 +28,7 @@
     </div>
     <script type='text/javascript' src="js/list.js"></script>
     <script type='text/javascript' src="js/map.js"></script>
-    <script type='text/javascript' src="js/main.js"></script>
+    <script type='text/javascript' src="js/filter.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8&v=3&callback=initMap"></script>
 </body>
 
