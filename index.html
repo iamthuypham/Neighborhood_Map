@@ -22,14 +22,18 @@
         </div>
         <ul id="location_list" data-bind="foreach: filteredLocations">
             <div id="location_box">
-                <li data-bind="text: $data.title"></li>
+                <li class="location" data-bind="text: $data.title.toLowerCase()"></li>
             </div>
         </ul>
     </div>
-    <script type='text/javascript' src="js/list.js"></script>
-    <script type='text/javascript' src="js/map.js"></script>
-    <script type='text/javascript' src="js/filter.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8&v=3&callback=initMap"></script>
+    <script type='text/javascript' src="js/GoogleMapAPI.js"></script>
+    <script type='text/javascript' src="js/filterMap.js"></script>
+    <script type='text/javascript' src="js/populateInfoWindow.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type='text/javascript' src="js/OpenAirQualityAPI.js"></script>
+  
 </body>
 
 </html>
