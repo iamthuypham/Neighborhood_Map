@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8"></script>
     <script type='text/javascript' src='js/knockout-3.4.2.js'></script>
     
 </head>
@@ -16,22 +17,20 @@
     <div id="map"></div>
     <div id="search">
         <div id="search_box_wrapper">
-            <input id="search_box" placeholder="Search" type="search" name="filter" data-bind="textInput: query" autocomplete="off" />
+            <input id="search_box" placeholder="Search" type="search" name="filter" data-bind="textInput: query, event: {keyup: closeInfoWindow}" autocomplete="off" />
         </div>
         <div id="result_message" data-bind="text: filteredLocations().length > 0 ? filteredLocations().length+' result(s)' : 'No result found' ">
         </div>
         <ul id="location_list" data-bind="foreach: filteredLocations">
             <div id="location_box">
-                <li class="location" data-bind="text: $data.title.toLowerCase()"></li>
+                <li class="location" data-bind="text: $data.title.toLowerCase(), click: function() {$parent.selectLocation($data)}"></li>
             </div>
         </ul>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8&v=3&callback=initMap"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script type='text/javascript' src="js/GoogleMapAPI.js"></script>
     <script type='text/javascript' src="js/filterMap.js"></script>
     <script type='text/javascript' src="js/populateInfoWindow.js"></script>
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script type='text/javascript' src="js/OpenAirQualityAPI.js"></script>
   
 </body>
