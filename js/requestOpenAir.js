@@ -6,10 +6,10 @@ function loadOpenAirData(marker, callback) {
         url: openAirUrl,
         success: function(data) {
             // Retrieve results
-            callback(data.results[0].measurements)
+            callback(data.results[0].measurements);
         },
         error: function(e) {
-            callback("Unable to retrieve data")
+            callback("Unable to retrieve data");
         }
-    })
+    });
 };

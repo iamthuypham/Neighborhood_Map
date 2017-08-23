@@ -9,11 +9,6 @@
 </head>
 
 <body>
-    <div id="floating-panel">
-        <input onclick="clearMarkers()" type=button value="Hide Markers">
-        <input onclick="showMarkers()" type=button value="Show All Markers">
-        <input onclick="deleteMarkers()" type=button value="Delete Markers">
-    </div>
     <div id="map"></div>
     <div id="search">
         <div id="search_box_wrapper">
@@ -28,11 +23,11 @@
         </ul>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script type='text/javascript' src="js/GoogleMapAPI.js"></script>
-    <script type='text/javascript' src="js/filterMap.js"></script>
+    <script type='text/javascript' src="js/loadMapAndMarker.js"></script>
+    <script type='text/javascript' src="js/koViewModel.js"></script>
+    <script type='text/javascript' src="js/handleMarker.js"></script>
     <script type='text/javascript' src="js/populateInfoWindow.js"></script>
-    <script type='text/javascript' src="js/OpenAirQualityAPI.js"></script>
-  
+    <script type='text/javascript' src="js/requestOpenAir.js"></script>
 </body>
 
 </html>

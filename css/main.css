@@ -47,6 +47,7 @@ li {
 
 .location {
     text-transform: capitalize;
+    cursor: pointer;
 }
 
 .marker_title {
@@ -55,8 +56,6 @@ li {
 
 sub {
     bottom: -0.25em;
-}
-sub {
     font-size: 75%;
     line-height: 0;
     position: relative;
