@@ -3,46 +3,46 @@
 // one infowindow which will open at the marker that is clicked, and populate based
 // on that markers position.
 function populateInfoWindow(marker, infowindow) {
-    var openAirData = []
-    var html = ''
+    var openAirData = [];
+    var html = '';
     loadOpenAirData(marker, function(data){
         if (typeof (data) == 'string') {
-            html += '<p>'+data+'</p>'
+            html += '<p>'+data+'</p>';
         } else {
-            openAirData = data
+            openAirData = data;
         }
         for (var i = 0; i < openAirData.length; i++) {
-            var name = openAirData[i].parameter
+            var name = openAirData[i].parameter;
             // styling name
             switch(name) {
                 case "pm10":
-                    name = 'PM<sub>10</sub>'
+                    name = 'PM<sub>10</sub>';
                     break
                 case "pm25":
-                    name = 'PM<sub>25</sub>'
+                    name = 'PM<sub>25</sub>';
                     break
                 case "o3":
-                    name = 'O<sub>3</sub>'
+                    name = 'O<sub>3</sub>';
                     break
                 case "no2":
-                    name = 'NO<sub>2</sub>'
+                    name = 'NO<sub>2</sub>';
                     break
                 case "so2":
-                    name = 'SO<sub>2</sub>'
+                    name = 'SO<sub>2</sub>';
                     break
                 case "co":
-                    name = 'CO'
+                    name = 'CO';
                     break
                 case "bc":
-                    name = 'BC'
+                    name = 'BC';
                     break
                 default:
-                    name
+                    name;
                     break
             }
-            var value = openAirData[i].value
+            var value = openAirData[i].value;
             // styling name and value
-            html += '<li><strong>'+name+'</strong>: '+value+'</li>'
+            html += '<li><strong>'+name+'</strong>: '+value+'</li>';
         }
         
         // Check to make sure the infowindow is not already opened on this marker.
