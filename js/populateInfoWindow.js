@@ -17,28 +17,28 @@ function populateInfoWindow(marker, infowindow) {
             switch(name) {
                 case "pm10":
                     name = 'PM<sub>10</sub>';
-                    break
+                    break;
                 case "pm25":
                     name = 'PM<sub>25</sub>';
-                    break
+                    break;
                 case "o3":
                     name = 'O<sub>3</sub>';
-                    break
+                    break;
                 case "no2":
                     name = 'NO<sub>2</sub>';
-                    break
+                    break;
                 case "so2":
                     name = 'SO<sub>2</sub>';
-                    break
+                    break;
                 case "co":
                     name = 'CO';
-                    break
+                    break;
                 case "bc":
                     name = 'BC';
-                    break
+                    break;
                 default:
-                    name;
-                    break
+                    name = name;
+                    break;
             }
             var value = openAirData[i].value;
             // styling name and value
@@ -49,8 +49,7 @@ function populateInfoWindow(marker, infowindow) {
         if (infowindow.marker != marker) {
             infowindow.marker = marker;
             infowindow.setContent(
-                '<div class="marker_title">' + marker.title.toLowerCase() + '</div>'
-                + '<ul>'+html+'</ul>'
+                '<div class="marker_title">' + marker.title.toLowerCase() + '</div>' + '<ul>'+html+'</ul>'
                 );
             infowindow.open(map, marker);
             // Make sure the marker property is cleared if the infowindow is closed.
@@ -58,9 +57,5 @@ function populateInfoWindow(marker, infowindow) {
                 infowindow.setMarker = null;
             });
         }
-    })
-    
-    
-    
-    
+    });   
 }

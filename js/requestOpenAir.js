@@ -1,6 +1,6 @@
 /**REQUEST AIR QUALITY FROM OPENAIR API**/
 function loadOpenAirData(marker, callback) {
-    var openAirUrl = 'https://api.openaq.org/v1/latest?location='+marker.title
+    var openAirUrl = 'https://api.openaq.org/v1/latest?location='+marker.title;
     // Ajax request 
     $.ajax({
         url: openAirUrl,
@@ -12,4 +12,4 @@ function loadOpenAirData(marker, callback) {
             callback("Unable to retrieve data");
         }
     });
-};
+}

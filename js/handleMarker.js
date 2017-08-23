@@ -12,7 +12,7 @@ function showMarkers(l) {
         if (marker.title == l.title) {
             marker.visible = true;
         }
-    })
+    });
 }
 
 // Loop through markers and set some markers invisible
@@ -21,14 +21,14 @@ function hideMarkers(l) {
         if (marker.title == l.title) {
             marker.visible = false;
         }
-    })
+    });
 }
 
 // Loop through markers and reset all markers visible
 function setMarkersVisible() {
     markers.forEach(function(marker) {
         marker.visible = true;
-    })
+    });
 }
 
 // Find marker of location which users select
@@ -38,6 +38,6 @@ function findMarkers(l) {
         if (marker.title == l.title) {
             selectedMarker = marker;
         }
-    })
+    });
     return selectedMarker;
 }

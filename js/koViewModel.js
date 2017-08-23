@@ -14,7 +14,7 @@ var koViewModel = function(map, markers, locations) {
             }
         },
         owner:this
-    })
+    });
     
     // this function filters location based on users' search query
     self.filteredLocations = ko.computed(function () {
@@ -58,5 +58,5 @@ var koViewModel = function(map, markers, locations) {
             google.maps.event.trigger(marker,'click');
         },
         owner: this
-    })
-}
+    });
+};
