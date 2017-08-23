@@ -21,13 +21,15 @@ Udacity Neighborhood Map is a web application project from Udacity Full Stack Na
 3. Open `index.html` file with any browser
 
 ## Project Structure
-├── index.html
-├── css
-│   └── main.css
-└── js
-    ├── handleMarker.js
-    ├── knockout-3.4.2.js
-    ├── koViewModel.js
-    ├── loadMapAndMarker.js
-    ├── populateInfoWindow.js
+```
+├── index.html 
+├── css 
+│   └── main.css 
+└── js 
+    ├── handleMarker.js 
+    ├── knockout-3.4.2.js 
+    ├── koViewModel.js 
+    ├── loadMapAndMarker.js 
+    ├── populateInfoWindow.js 
     └── requestOpenAir.js
+```
