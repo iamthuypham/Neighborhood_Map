@@ -25,7 +25,7 @@ function createMap (){
         center: { lat: 40.7413549, lng: -73.9980244 },
         zoom: 2
     });
-    return map
+    return map;
 }
 
 function createMarker(locations, map) {
@@ -46,7 +46,7 @@ function createMarker(locations, map) {
         markers.push(marker);
         // Create an onclick event to open an infowindow at each marker.
         marker.addListener('click', function() {
-            populateInfoWindow(this, infowindow)
+            populateInfoWindow(this, infowindow);
         });
         
         bounds.extend(markers[index].position);
