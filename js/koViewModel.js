@@ -1,8 +1,9 @@
-var koViewModel = function(map, markers, locations) {
+var MapVM = function(map, markers, locations) {
     var self = this;
     self.googleMap = map;
     self.filteredLocations = ko.observableArray(locations);
     self.query = ko.observable('');
+    self.selectedLocationTitle = ko.observable(selectedLocationTitle);
     
     self.closeInfoWindow = ko.pureComputed({
         read: function(){
@@ -36,8 +37,6 @@ var koViewModel = function(map, markers, locations) {
                 // if not: set the markers of each location invisible
                     hideMarkers(location);
                 }
-                // after set visibility, refresh the map and markers
-                refreshMarkersOnMap(self.googleMap);
             });
         } else {
             // if location_box input has no text or user click reset 'x' button:
@@ -52,9 +51,14 @@ var koViewModel = function(map, markers, locations) {
     
     // this function triggers click on marker when users click on a location from the list
     self.selectLocation = ko.pureComputed({
-        read: function(){},
-        write: function(d){
-            var marker = findMarkers(d);
+        read: function(d){
+        },
+         write: function(d){
+            // Change color of the selected location in the list
+            self.selectedLocationTitle(d.title.toLowerCase());
+            // Find marker of the selected location
+      	    var marker = findMarkers(d);
+      	    // Trigger Click event on the marker
             google.maps.event.trigger(marker,'click');
         },
         owner: this

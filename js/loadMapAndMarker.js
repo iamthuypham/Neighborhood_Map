@@ -1,29 +1,25 @@
 var markers = [];
+var currentSelectedMarker;
+var selectedLocationTitle = '';
 var infowindow;
+var defaultMarkerColor = {
+    url: 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|B7F3FF',
+};
+var selectedMarkerColor = {
+    url: 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|EF17BD',
+};
 
-google.maps.event.addDomListener(window, 'load', function(){
-    
-    var locations = [
-            { title: 'ARNOLD', latLng: { lat: 38.448581, lng: -90.398436 } },
-            { title: 'Arden Arcade - Del P', latLng: { lat: 38.613804, lng: -121.368007 } },
-            { title: 'Anaheim', latLng: { lat: 33.830586, lng: -117.938509 } },
-            { title: 'Alamo Lake', latLng: { lat: 34.243889, lng: -113.558611 } },
-            { title: 'AURORA HILLS', latLng: { lat: 38.859402, lng: -77.058899 } },
-            { title: 'ALLEN PARK', latLng: { lat: 42.2283, lng: -83.2092 } },
-            { title: 'Athens Supersite', latLng: { lat: 39.308, lng: -82.1183} },
-            { title: 'Atascadero2', latLng: { lat: 35.494556, lng: -120.666203} }
-            
-        ];
-    
+function initMap(){
     var googleMap = createMap();
     var googleMarker = createMarker(locations, googleMap);
-    ko.applyBindings(new koViewModel(googleMap, googleMarker, locations));
-});
+    window.vm = new MapVM(googleMap, googleMarker, locations); 
+    ko.applyBindings(vm);
+}
 
 function createMap (){
     var map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 40.7413549, lng: -73.9980244 },
-        zoom: 2
+        center: { lat: 39.742043, lng: -104.991531 },
+        zoom: 4
     });
     return map;
 }
@@ -37,6 +33,7 @@ function createMarker(locations, map) {
             map: self.googleMap,
             position: location.latLng,
             title: location.title,
+            icon: defaultMarkerColor,
             animation: google.maps.Animation.DROP,
             id: index
         };
@@ -46,11 +43,29 @@ function createMarker(locations, map) {
         markers.push(marker);
         // Create an onclick event to open an infowindow at each marker.
         marker.addListener('click', function() {
+            window.vm.selectedLocationTitle(marker.title.toLowerCase());
+            // Change to marker with different color
+            changeMarkerColor(map, this);
+            // Marker bounce
+            toggleBounce(this);
+            // Open an info window
             populateInfoWindow(this, infowindow);
         });
         
         bounds.extend(markers[index].position);
     });
     // Extend the boundaries of the map for each marker
-    map.fitBounds(bounds);
+    google.maps.event.addDomListener(window, 'resize', function() {
+            map.fitBounds(bounds);
+    });
+}
+
+// This function handle Google Map AI request errors
+function mapError() {
+    alert("Google Map error.");
+}
+
+// This function handle Google Map authorization error
+function gm_authFailure() {
+    alert("Google Map authorization error. Please try refreshing the page.");
 }

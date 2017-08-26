@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Map Project</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8"></script>
-    <script type='text/javascript' src='js/knockout-3.4.2.js'></script>
-    
+    <script type="text/javascript" src="js/knockout-3.4.2.js"></script>
 </head>
-
 <body>
-    <div id="map"></div>
-    <div id="search">
-        <div id="search_box_wrapper">
-            <input id="search_box" placeholder="Search" type="search" name="filter" data-bind="textInput: query, event: {keyup: closeInfoWindow}" autocomplete="off" />
-        </div>
-        <div id="result_message" data-bind="text: filteredLocations().length > 0 ? filteredLocations().length+' result(s)' : 'No result found' ">
-        </div>
-        <ul id="location_list" data-bind="foreach: filteredLocations">
-            <div id="location_box">
-                <li class="location" data-bind="text: $data.title.toLowerCase(), click: function() {$parent.selectLocation($data)}"></li>
+    <header>
+        <h3>Neighborhood Map App</h3>
+    </header>
+    <section id="content">
+        <div id="map"></div>
+        <div id="search">
+            <div id="search_box_wrapper">
+                <input id="search_box" placeholder="Search" type="search" name="filter" data-bind="textInput: query, event: {keyup: closeInfoWindow}" autocomplete="off" />
             </div>
-        </ul>
-    </div>
+            <div id="result_message" data-bind="text: filteredLocations().length > 0 ? filteredLocations().length+' result(s)' : 'No result found' ">
+            </div>
+            <ul id="location_list" data-bind="foreach: filteredLocations">
+                <div class="location_box" data-bind="css: { selected : $data.title.toLowerCase() == $parent.selectedLocationTitle() }">
+                    <li class="location" data-bind="text: $data.title.toLowerCase(), click: function() {$parent.selectLocation($data)}"></li>
+                </div>
+            </ul>
+        </div>
+    </section>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script type='text/javascript' src="js/loadMapAndMarker.js"></script>
-    <script type='text/javascript' src="js/koViewModel.js"></script>
-    <script type='text/javascript' src="js/handleMarker.js"></script>
-    <script type='text/javascript' src="js/populateInfoWindow.js"></script>
-    <script type='text/javascript' src="js/requestOpenAir.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+    <script type="text/javascript" src="js/loadMapAndMarker.js"></script>
+    <script type="text/javascript" src="js/koViewModel.js"></script>
+    <script type="text/javascript" src="js/handleMarker.js"></script>
+    <script type="text/javascript" src="js/populateInfoWindow.js"></script>
+    <script type="text/javascript" src="js/requestOpenAir.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwqh73mkvs769nM3qDkmGWNHW-0aiMSw8&callback=initMap" onerror="mapError()"></script>
 </body>
 
 </html>
