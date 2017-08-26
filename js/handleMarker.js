@@ -1,4 +1,14 @@
 /**MARKER FUNCTION**/
+// Change marker color
+function changeMarkerColor(map, newSelectedMarker) {
+    if (currentSelectedMarker) {
+        currentSelectedMarker.icon = defaultMarkerColor;    
+    }
+    newSelectedMarker.icon = selectedMarkerColor;
+    refreshMarkersOnMap(map);
+    currentSelectedMarker = newSelectedMarker;
+}
+
 // Loop through markers list and set them on map
 function refreshMarkersOnMap(map) {
   for (var i = 0; i < markers.length; i++) {
@@ -10,7 +20,7 @@ function refreshMarkersOnMap(map) {
 function showMarkers(l) {
     markers.forEach(function(marker) {
         if (marker.title == l.title) {
-            marker.visible = true;
+            marker.setVisible(true);
         }
     });
 }
@@ -19,7 +29,7 @@ function showMarkers(l) {
 function hideMarkers(l) {
     markers.forEach(function(marker) {
         if (marker.title == l.title) {
-            marker.visible = false;
+            marker.setVisible(false);
         }
     });
 }
@@ -27,7 +37,7 @@ function hideMarkers(l) {
 // Loop through markers and reset all markers visible
 function setMarkersVisible() {
     markers.forEach(function(marker) {
-        marker.visible = true;
+        marker.setVisible(true);
     });
 }
 
@@ -40,4 +50,17 @@ function findMarkers(l) {
         }
     });
     return selectedMarker;
+}
+
+// Make marker bounce once when trigger
+function toggleBounce(marker) {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        if (infowindow) {
+            infowindow.close();
+        }
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function(){ marker.setAnimation(null); }, 750);
+    }
 }
